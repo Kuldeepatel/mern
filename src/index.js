@@ -1,15 +1,19 @@
-import dotenv from "dotenv"
-import connectDB from "./db/index.js";
+// Importing necessary modules
+import dotenv from "dotenv"; // Module for handling environment variables
+import connectDB from "./db/index.js"; // Module for connecting to MongoDB
 
-dotenv.config({path :'./env'})
+// Configuring dotenv to read variables from .env file
+dotenv.config({path :'./env'});
 
+// Connecting to MongoDB
 connectDB()
-
-.then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-        console.log(`server is running at port : ${process.env.PORT}`);
+    .then(() => {
+        // Starting the server
+        app.listen(process.env.PORT || 8000, () => {
+            console.log(`Server is running at port: ${process.env.PORT || 8000}`);
+        });
     })
-})
-.catch((err) => {
-    console.log("mongodb connection failed",err);
-})
+    .catch((err) => {
+        // Handling MongoDB connection failure
+        console.log("MongoDB connection failed", err);
+    });
